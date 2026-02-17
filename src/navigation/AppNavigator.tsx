@@ -6,11 +6,14 @@ import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '../constants/theme';
 
 // Screens
-import { EnhancedDiscoveryScreen } from '../screens/EnhancedDiscoveryScreen';
+import { ProfessionalDiscoveryScreen } from '../screens/ProfessionalDiscoveryScreen';
 import { BarberProfileScreen } from '../screens/BarberProfileScreen';
 import { BookingScreen } from '../screens/BookingScreen';
 import { AppointmentsScreen } from '../screens/AppointmentsScreen';
-import { BarberDashboardScreen } from '../screens/BarberDashboardScreen';
+import { CalendarScheduleScreen } from '../screens/CalendarScheduleScreen';
+import { WalkInQueueScreen } from '../screens/WalkInQueueScreen';
+import { ClientManagementScreen } from '../screens/ClientManagementScreen';
+import { FinancialDashboardScreen } from '../screens/FinancialDashboardScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -38,7 +41,7 @@ const ClientTabNavigator = () => {
     >
       <Tab.Screen
         name="Discovery"
-        component={EnhancedDiscoveryScreen}
+        component={ProfessionalDiscoveryScreen}
         options={{
           tabBarLabel: 'Discover',
           tabBarIcon: ({ color, size }) => (
@@ -47,22 +50,42 @@ const ClientTabNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="Appointments"
-        component={AppointmentsScreen}
+        name="Schedule"
+        component={CalendarScheduleScreen}
         options={{
-          tabBarLabel: 'Bookings',
+          tabBarLabel: 'Schedule',
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="calendar" size={size} color={color} />
           ),
         }}
       />
       <Tab.Screen
-        name="Profile"
-        component={BarberDashboardScreen}
+        name="Queue"
+        component={WalkInQueueScreen}
         options={{
-          tabBarLabel: 'Profile',
+          tabBarLabel: 'Queue',
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="person" size={size} color={color} />
+            <Ionicons name="people" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Clients"
+        component={ClientManagementScreen}
+        options={{
+          tabBarLabel: 'Clients',
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="person-circle" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Financials"
+        component={FinancialDashboardScreen}
+        options={{
+          tabBarLabel: 'Money',
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="wallet" size={size} color={color} />
           ),
         }}
       />
@@ -107,6 +130,14 @@ export const AppNavigator = () => {
           options={{
             presentation: 'modal',
             animation: 'slide_from_bottom',
+          }}
+        />
+        <Stack.Screen 
+          name="Appointments" 
+          component={AppointmentsScreen}
+          options={{
+            presentation: 'card',
+            animation: 'slide_from_right',
           }}
         />
       </Stack.Navigator>
